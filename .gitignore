@@ -1,0 +1,12 @@
+*/node_modules
+*tern-project
+log/
+*.log
+client/build
+tmp/
+*~
+.*.sw[a-z]
+*.log
+/.byebug_history
+.env
+/spec/examples.txt

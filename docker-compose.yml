@@ -1,0 +1,26 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  server:
+    build: .
+    environment:
+      - GSNI_BASE_URL
+    command: bundle exec rails s -p 3001 -b 0.0.0.0
+    volumes:
+      - .:/railsapp
+    ports:
+      - 3001:3001
+    depends_on:
+      - db
+  client:
+    build:
+      context: ./client
+      args:
+        - GSNI_BASE_URL
+    volumes:
+      - ./client:/reactapp
+    ports:
+      - 3000:3000
+    links:
+      - server

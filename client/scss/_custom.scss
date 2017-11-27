@@ -1,0 +1,102 @@
+// Here you can add other styles
+
+//for contact BRM Modal
+.modal-header {
+    background-color: $gray-100;
+}
+
+// body background image
+.container-fluid::after {
+    content: "";
+    background: url("bridgeBackground.jpg");
+    background-size: cover;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;  
+    -webkit-filter: grayscale(1); /* Old WebKit */
+    filter: grayscale(1);
+  }
+
+  //welcome and announcements page
+.page-buttons {
+  color: white;
+  padding: 1em;
+}
+
+.button-style {
+  margin-right: 1em;
+}
+
+.nav-tabs .nav-link, .nav-tabs .navbar .dropdown-toggle, .navbar .nav-tabs .dropdown-toggle {
+  background-color: #f0f3f5;
+  border-color: #c2cfd6;
+}
+.nav-tabs .nav-item {
+  margin-bottom: 0px;
+}
+
+.DashTabDivLeft{
+  min-height: 100%;
+}
+.statTable{
+  line-height: 3.252;
+  font-size: .9rem;
+}
+.LifetimeStatTable{
+  line-height: 3.7;
+  font-size: 1rem;
+}
+
+.tierTable {
+  color: white;
+}
+
+//production table
+.react-grid-Container, .react-grid-HeaderRow, .react-grid-Canvas {
+    width: 100%!important;
+}
+
+//gauge
+.speedometer {
+  overflow: visible !important;
+}
+
+.gauge-text {
+  font-size: 1.1rem;
+  text-align: center;
+  padding-top: 1em;
+}
+.gauge-hidden {
+  .sidebar .speedometer {
+display: none !important;
+  }
+}
+
+.gauge-hidden {
+  .gauge-text  {
+    display: none !important;
+      }
+    }
+
+//anouncements button
+.btn .badge {
+position: inherit;
+color: #b91a1a;
+font-size: 16px;
+background-color: $gray-100;
+}
+
+
+@media (max-width: 800px) {
+  .container-fluid {
+    padding: 0 !important;
+  }
+
+  .breadcrumb {
+    margin: 0 !important;
+  }
+}

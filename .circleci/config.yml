@@ -1,0 +1,68 @@
+version: 2
+jobs:
+  test:
+    machine:
+      image:
+        - circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: build container
+          command: docker-compose build
+      - run:
+          name: javascript tests
+          command: docker-compose run client yarn test
+      - run:
+          name: create database
+          command: docker-compose run server rake db:create
+      - run:
+          name: server tests
+          command: docker-compose run server rspec
+  lint:
+    machine:
+      image:
+        - circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: build container client
+          command: docker-compose build client
+      - run:
+          name: javascript linter
+          command: |
+            docker-compose run client yarn add eslint
+            docker-compose run client /reactapp/node_modules/.bin/eslint $(git ls-files -m) --quiet
+  build:
+    docker:
+      - image: ubuntu:17.10
+    steps:
+      - run:
+          name: install-ssh
+          command: apt-get -yq update && apt-get -yqq install ssh
+      - run:
+          name: create-ssh-dir
+          command: mkdir ~/.ssh
+      - run:
+          name: add-droplet-to-hosts
+          command: ssh-keyscan $DROPLET_IP >> ~/.ssh/known_hosts
+      - deploy:
+          name: Deploy to digitalocean
+          command: ssh -v $DROPLET_USER@$DROPLET_IP "cd MyGS; git checkout master; git pull; ./build_and_launch.sh &; disown; exit"
+
+workflows:
+  version: 2
+  test_and_build:
+    jobs:
+      - test
+      - lint:
+          filters:
+            branches:
+              ignore:
+                - master
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
