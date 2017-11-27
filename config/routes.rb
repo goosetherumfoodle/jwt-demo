@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resource :user_token, only: [:create]
+  post 'user_token' => 'user_token#create' # required by knock gem
   resource :users, only: [:show]
 end

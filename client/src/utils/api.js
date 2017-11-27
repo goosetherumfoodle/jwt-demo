@@ -13,7 +13,7 @@ const unauthenticated = axios.create({
 });
 
 function getUser() {
-    return authenticated('/user.json');
+    return authenticated('/users.json');
 }
 
 function postAuthToken(email, password) {

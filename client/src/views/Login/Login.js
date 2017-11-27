@@ -13,8 +13,9 @@ class Login extends Component {
 
     handleLoginClick(history) {
         return () => {
-            postUserToken(this.state.email, this.state.password)
+          postAuthToken(this.state.email, this.state.password)
                 .then((response) => {
+                  console.log(`create jwt response: ${JSON.stringify(response)}`)
                     setToken(response.data.jwt);
                     setRole(response.data.userRole);
                     history.push('/');
@@ -37,16 +38,16 @@ class Login extends Component {
                                         <InputGroup className="mb-3">
                                             <InputGroupAddon><i className="icon-user"></i></InputGroupAddon>
                                             <Input type="text"
-                                                placeholder="jenny@insurance.com"
-                                                value={this.state.email}
-                                                onChange={(e) => this.setState({email: e.target.value})}/>
+                                                   placeholder="email@example.com"
+                                                   value={this.state.email}
+                                                   onChange={(e) => this.setState({email: e.target.value})}/>
                                         </InputGroup>
                                         <InputGroup className="mb-4">
                                             <InputGroupAddon><i className="icon-lock"></i></InputGroupAddon>
                                             <Input type="password"
-                                                placeholder="**************"
-                                                value={this.state.password}
-                                                onChange={(e) => this.setState({password: e.target.value})} />
+                                                   placeholder="**************"
+                                                   value={this.state.password}
+                                                   onChange={(e) => this.setState({password: e.target.value})} />
                                         </InputGroup>
                                         <Row>
                                             <Col xs="6">
@@ -58,11 +59,11 @@ class Login extends Component {
                                 <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: 44 + '%' }}>
                                     <CardBody className="text-center">
                                         <div>
-                                            <h2>Sign up</h2>
-                                            <p>Click Login to view My GS Demo.<br></br></p>
-                                            <p>example agent account:<br/>email: &quot;agent@example.com&quot;<br/>pass: &quot;password&quot;</p>
-                                            <p>example agency account:<br/>email: &quot;agency@example.com&quot;<br/>pass: &quot;password&quot;</p>
-                                            <p>(when switching between account types, please refresh the page to see changes)</p>
+                                            <h2>JWT token auth demo</h2>
+                                            <p>Click Login to set JWT token<br></br></p>
+                                            <p>creds for normal account:<br/>email: &quot;user@example.com&quot;<br/>pass: &quot;userpass&quot;</p>
+                                            <p>creds for admin account:<br/>email: &quot;admin@example.com&quot;<br/>pass: &quot;adminpass&quot;</p>
+                                            <p>(when switching between account types you&apos;ll need to the page to see changes)</p>
                                         </div>
                                     </CardBody>
                                 </Card>

@@ -1,26 +1,27 @@
 import React, {Component} from 'react';
 import Header from '../components/Header/Header';
 import {getUser} from '../utils/api';
+import {Row, Card, CardBody} from 'reactstrap';
 
 const userRole = 'admin';
 
 class adminUserContainer extends Component {
     constructor() {
         super();
-        this.state = {email: ''};
+        this.state = {email: '...'};
     }
 
     componentDidMount() {
         getUser().then((response) => {
-            this.setState({email: response.data.user.email});
+            this.setState({email: response.data.email});
         }).catch((err) => console.warn(err));
     }
 
     render() {
         return (
             <div className = "app">
-                <Header userRole={userRole}/>
-                <p>user email is {this.state.email}</p>
+                <Header userRole={userRole} />
+                <div className='app-body'>user email is {this.state.email}</div>
             </div>
         );
     }

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Header from '../components/Header/Header';
 import {getUser} from '../utils/api';
 
+const userRole = 'normal';
+
 class normalUserContainer extends Component {
     constructor() {
         super();
@@ -10,15 +12,16 @@ class normalUserContainer extends Component {
 
     componentDidMount() {
         getUser().then((response) => {
-            this.setState({email: response.data.user.email});
+          console.log(`get users response: ${JSON.stringify(response)}`);
+            this.setState({email: response.data.email});
         }).then((err) => console.warn(err));
     }
 
     render() {
         return (
             <div className = "app">
-                <Header userType={'normal'}/>
-                <p>user email is {this.state.email}</p>
+                <Header userRole={userRole} />
+                <div className='app-body'>user email is {this.state.email}</div>
             </div>
         );
     }
