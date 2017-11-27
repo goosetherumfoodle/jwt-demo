@@ -1,30 +1,16 @@
 # README
 
-# Latest Deployment
+## running in production
+Run the `build_and_deploy.sh` script
 
-[![CircleCI](https://circleci.com/gh/WorkHardPittsburgh/MyGS/tree/master.svg?style=svg&circle-token=178da28dfd4d0cb18db41aedf2f4db14db10886e)](https://circleci.com/gh/WorkHardPittsburgh/MyGS/tree/master)
-
-If the above badge is green, the link below will be the deployed code from the latest commit on master.
-
-http://104.131.79.5:3000
-
-An example endpoint exists at `/animal.json`, which loads an animal
-that is displayed as the 3rd item in the the `Rewards` component.
-
-# Workflow
-
-## starting backend server
-Run `docker-compose build` then `docker-compose up`
-
-## starting frontend server
-
-We'll run this locally for now.
-- `cd ./client && npm install` -- install deps
-- `cd ./client && npm start`   -- start client server
+## running for development
+Run `docker-compose build server` to deploy the server, then `npm install && npm up` to deploy the client locally.
 
 ## server ports
 
-Client: `localhost:8080`
+Local Client: `localhost:8080`
+
+Production Client: `localhost:3000`
 
 Server: `localhost:3001`
 
