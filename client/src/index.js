@@ -1,42 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
-import {isAgent} from './utils/role';
-import {signedIn} from './utils/token';
+import {isAdmin} from './utils/role';
+import {isSignedIn} from './utils/authToken';
 
-// Styles
-// Import Font Awesome Icons Set
 import 'font-awesome/css/font-awesome.min.css';
-// Import Simple Line Icons Set
 import 'simple-line-icons/css/simple-line-icons.css';
-// Import Main styles for this application
 import '../scss/style.scss';
-// Temp fix for reactstrap
 import '../scss/core/_dropdown-menu-right.scss';
 
-// Containers
-import AgentFull from './containers/AgentFull/AgentFull.js';
-import AgencyFull from './containers/AgencyFull/AgencyFull.js';
-
-//Views
+import {adminUserContainer} from './containers/adminUser.js';
+import {normalUserContainer} from './containers/normalUser.js';
 import Login from './views/Login/';
 
 function rollifiedFull() {
-    if (isAgent()) {
-        return AgentFull;
+    if (isAdmin()) {
+        return adminUserContainer;
     }
-    return AgencyFull;
+    return normalUserContainer;
 }
 
 function componentOrRedirect(Component, props) {
-    if (signedIn()) {
+    if (isSignedIn()) {
         return <Component {...props}/>;
     }
     return <Redirect to={{
         pathname: '/login',
         state: { from: props.location }
     }}/>;
-
 }
 
 function PrivateRoute({ component: Component, ...rest }) {

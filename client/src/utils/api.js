@@ -1,33 +1,32 @@
 import axios from 'axios';
-import {getToken} from './token';
+import {getToken} from './authToken';
+
+const apiUrl = `${process.env.baseUrl}:3001`;
 
 const authenticated = axios.create({
-  baseURL: `${process.env.baseUrl}:3001`,
-  headers: {'Authorization': `Bearer ${getToken()}`}
+    baseURL: apiUrl,
+    headers: {'Authorization': `Bearer ${getToken()}`}
 });
 
 const unauthenticated = axios.create({
-  baseURL: `${process.env.baseUrl}:3001`
+    baseURL: apiUrl
 });
 
-function getAgent() {
-  return authenticated('/agents.json');
-};
-
-function appLoad() {
-  return authenticated('/app_data.json');
-};
-
-function postUserToken(email, password) {
-  return unauthenticated.post('/user_token',
-                              {
-                                 auth: {
-                                   email: email,
-                                   password: password
-                                 }
-                                }
-
-                             );
+function getUser() {
+    return authenticated('/user.json');
 }
 
-export {getAgent, appLoad, postUserToken};
+function postAuthToken(email, password) {
+    return unauthenticated.post(
+        '/user_token',
+        {
+            auth: {
+                email: email,
+                password: password
+            }
+        }
+
+    );
+}
+
+export {getUser, postAuthToken};

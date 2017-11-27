@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, Modal} from 'reactstrap';
-import {postUserToken} from '../../utils/api';
-import {setToken} from '../../utils/token';
+import {postAuthToken} from '../../utils/api';
+import {setToken} from '../../utils/authToken';
 import {setRole} from '../../utils/role';
 
 class Login extends Component {
@@ -37,16 +37,16 @@ class Login extends Component {
                                         <InputGroup className="mb-3">
                                             <InputGroupAddon><i className="icon-user"></i></InputGroupAddon>
                                             <Input type="text"
-                                                   placeholder="jenny@insurance.com"
-                                                   value={this.state.email}
-                                                   onChange={(e) => this.setState({email: e.target.value})}/>
+                                                placeholder="jenny@insurance.com"
+                                                value={this.state.email}
+                                                onChange={(e) => this.setState({email: e.target.value})}/>
                                         </InputGroup>
                                         <InputGroup className="mb-4">
                                             <InputGroupAddon><i className="icon-lock"></i></InputGroupAddon>
                                             <Input type="password"
-                                                   placeholder="**************"
-                                                   value={this.state.password}
-                                                   onChange={(e) => this.setState({password: e.target.value})} />
+                                                placeholder="**************"
+                                                value={this.state.password}
+                                                onChange={(e) => this.setState({password: e.target.value})} />
                                         </InputGroup>
                                         <Row>
                                             <Col xs="6">

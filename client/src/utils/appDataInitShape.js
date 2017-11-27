@@ -1,5 +1,5 @@
 export default {
-      user: {
+    user: {
         npn: 0,
         name: '',
         leaderBoardRank: 0,
@@ -10,70 +10,70 @@ export default {
         brmEmail: '',
         brmPhone: '',
         policies: {
-          policiesSoldLifetime: 0,
-          currentContestPolicies: 0,
-          earnedRevLifetime: '',
-          currentContestRev: '',
-      },
-      revByMonth: {
-        january: 0,
-        february: 0,
-        march: 0,
-        april: 0,
-        may: 0,
-        june: 0,
-        july: 0,
-        august: 0,
-        september: 0,
-        october: 0,
-        november: 0,
-        december: 0
-      }
+            policiesSoldLifetime: 0,
+            currentContestPolicies: 0,
+            earnedRevLifetime: '',
+            currentContestRev: '',
+        },
+        revByMonth: {
+            january: 0,
+            february: 0,
+            march: 0,
+            april: 0,
+            may: 0,
+            june: 0,
+            july: 0,
+            august: 0,
+            september: 0,
+            october: 0,
+            november: 0,
+            december: 0
+        }
     },
     contest: {
-      name: '',
-      startDate: '',
-      endDate: '',
-      tiers: [
-      {
         name: '',
-        goal: 0,
-        revShare: 0,
-        potentialEarnings: 0
-      }
-    ],
-    leaderboard: [
-      {
-        npn: 0,
-        policies: 0
-      }
-    ]
+        startDate: '',
+        endDate: '',
+        tiers: [
+            {
+                name: '',
+                goal: 0,
+                revShare: 0,
+                potentialEarnings: 0
+            }
+        ],
+        leaderboard: [
+            {
+                npn: 0,
+                policies: 0
+            }
+        ]
     },
     announcements: {
-      generalNews: ''
+        generalNews: ''
     },
     lifetimeLeaderboard: [{
-      npn: 0,
-      policies: 0
+        npn: 0,
+        policies: 0
     }],
     bookOfBusiness: [{
-      HICN: '',
-      memberName: '',
-      carrier: '',
-      product: '',
-      effectiveDate: '',
-      cmsPlanYear: '',
-      status: ''
+        HICN: '',
+        memberName: '',
+        carrier: '',
+        product: '',
+        effectiveDate: '',
+        cmsPlanYear: '',
+        status: ''
     }],
     downlines: [{
-      name: '',
-      totalEarnings: 0,
-      topAgents: [
-        {
-          name: '',
-          percentOfEarnings: 0
-        }
-      ]
+        name: '',
+        totalEarnings: 0,
+        topAgents: [
+            {
+                name: '',
+                percentOfEarnings: 0
+            }
+        ]
     }
-  ]
+    ]
 };

@@ -1,14 +1,14 @@
 function setRole(role) {
-  return localStorage.setItem('gsni-role', role);
-};
-
-function getRole() {
-  return localStorage.getItem('gsni-role');
-};
-
-function isAgent() {
-    const foundRole = getRole();
-    return foundRole === 'agent';
+    return localStorage.setItem('user-role', role);
 }
 
-export {setRole, isAgent};
+function getRole() {
+    return localStorage.getItem('user-role');
+}
+
+function isAdmin() {
+    const foundRole = getRole();
+    return foundRole === 'admin';
+}
+
+export {setRole, isAdmin};

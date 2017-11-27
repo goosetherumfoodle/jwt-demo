@@ -1,8 +1,8 @@
 export default () => {
-  const CurrentContest = {
-  Leaderboard: {}
+    const CurrentContest = {
+        Leaderboard: {}
 
-  };
+    };
 
-  return CurrentContest;
-}
+    return CurrentContest;
+};
